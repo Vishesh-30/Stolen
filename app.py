@@ -6,7 +6,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 
 
 from application.config import LocalDevelopmentConfig, db
-from application.modals import User
+from application.models import User
 
 app = None
 api = None
@@ -46,6 +46,8 @@ def load_user(username):
 
 
 
+
+from application.api.register import *
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -6,7 +6,7 @@
           <div class="mb-6 md:mb-0">
               <a class="flex items-center">
                   <img  src="../assets/Logo_transp.png" alt="Stolen Logo" class="h-8">
-                  <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-Gray pl-2">Stolen</span>
+                  <span class="self-center text-2xl font-extrabold whitespace-nowrap dark:text-Gray pl-2">STOLEN</span>
               </a>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -14,10 +14,10 @@
                   <h2 class="mb-6 text-sm text-coolGray-500 hover:text-coolGray-900 font-bold">Resources</h2>
                   <ul class="text-coolGray-500 hover:text-coolGray-900 font-medium">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                          <a href="#" class="hover:underline">Flowbite</a>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                          <a href="#" class="hover:underline">Tailwind CSS</a>
                       </li>
                   </ul>
               </div>
@@ -25,10 +25,10 @@
                   <h2 class="mb-6 text-sm text-coolGray-500 hover:text-coolGray-900 font-bold">Follow us</h2>
                   <ul class="text-coolGray-500 hover:text-coolGray-900 font-medium">
                       <li class="mb-4">
-                          <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
+                          <a href="#" class="hover:underline ">Github</a>
                       </li>
                       <li>
-                          <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
+                          <a href="#" class="hover:underline">Discord</a>
                       </li>
                   </ul>
               </div>

@@ -3,8 +3,9 @@
     <nav class="flex justify-between p-6 px-4">
                 <div class="flex justify-between items-center w-full">
                     <div class="xl:w-1/3">
-                        <a class="block max-w-max ml-8" href="/">
-                            <img src="../assets/Logo_transp.png" alt="Stolen Logo" class="h-8">
+                        <a class="flex items-center max-w-max ml-8" href="/">
+                            <img src="../assets/Logo_transp.png" alt="Stolen Logo" class="h-12">
+                            <span class="self-center text-2xl font-extrabold whitespace-nowrap dark:text-Gray pl-2">STOLEN</span>
                         </a>
                     </div>
                     <div class="hidden xl:block xl:w-1/3">

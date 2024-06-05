@@ -63,8 +63,5 @@ class LoginAPI(Resource):
                 return {'message': 'User does not exist or Invalid Credentials'}, 401
             
 
-
-api.add_resource(LoginAPI, '/api/login')            
-            
-
+api.add_resource(LoginAPI, '/api/login')
 api.add_resource(RegisterApI, '/api/register')

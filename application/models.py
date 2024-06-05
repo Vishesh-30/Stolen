@@ -1,7 +1,6 @@
 from application.config import db
 from flask_login import UserMixin
 
-
 class User(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
@@ -9,21 +8,11 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255), nullable=False)
     StolenCoins = db.Column(db.Integer, nullable=False)
 
+    def __init__(self, username, email, password, StolenCoins):
+        self.username = username
+        self.email = email
+        self.password = password
+        self.StolenCoins = StolenCoins
 
-    def is_user(self):
-        user = User.query.filter_by(username=self.username).first()
-        if user is not None:
-            return True
-        else:
-            return False
-    
-    def update_password(self, new_password):
-        self.password = new_password
-        db.session.commit()
-
-    def to_dict(self):
-        return {
-            'username': self.username,
-            'email': self.email,
-            'password': self.password
-        }
+    def __repr__(self):
+        return f'User {self.username}'

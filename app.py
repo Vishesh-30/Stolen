@@ -1,53 +1,35 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-
-
+from flask_jwt_extended import JWTManager
+from flask_login import LoginManager
 from application.config import LocalDevelopmentConfig, db
 from application.models import User
 
-app = None
-api = None
 
+app = Flask(__name__, template_folder='templates', static_folder='static')
+app.config.from_object(LocalDevelopmentConfig)
+db.init_app(app)
+api = Api(app)
+CORS(app)
 
-base_url = 'http://127.0.0.1:5000'
-def create_app():
-    app = Flask(__name__, template_folder = 'templates', static_folder = 'static')
-    app.config.from_object(LocalDevelopmentConfig)
-    db.init_app(app)
-    api = Api(app)
-    app.app_context().push()
-    CORS(app)
-
-    # with app.app_context():
-    #     db.create_all()
-    #     db.session.commit()
-
-    app.app_context().push()
-    return app, api
-
-
-app, api = create_app()
 jwt = JWTManager(app)
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-
 @login_manager.user_loader
-def load_user(username):
-    user =  User.query.get(username)
-    if user:
-        return user
-    return None
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
-
+# Uncomment this if you want to create tables at startup
+# with app.app_context():
+#     db.create_all()
 
 
 from application.api.register import *
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -3,6 +3,7 @@ import LandingPage from './components/LandingPage.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import UserRegister from './components/UserRegister.vue';
 import UserLogin from './components/UserLogin.vue';
+import UserDashboard from './components/UserDashboard.vue';
 
 
 
@@ -26,6 +27,11 @@ const routes = [
         path: '/LogIn',
         name: 'UserLogin',
         component: UserLogin
+    },
+    {
+        path: '/dashboard',
+        name: 'UserDashboard',
+        component: UserDashboard
     }
 ];
 

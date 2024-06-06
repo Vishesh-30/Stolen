@@ -105,7 +105,7 @@
         localStorage.setItem('username', username.value);
         localStorage.setItem('access_token', data.access_token);
         error.value = null;
-        router.push('/dashboard');
+        router.push('/home');
       } else {
         const errorData = await response.json();
         error.value = `Error logging in: ${errorData.message}`;

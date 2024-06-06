@@ -6,6 +6,7 @@ import UserLogin from './components/UserLogin.vue';
 import UserDashboard from './components/UserDashboard.vue';
 import UserHome from './components/UserHome.vue';
 import StolenCoins from './components/StolenCoins.vue';
+import UserPortfolio from './components/UserPortfolio.vue';
 
 
 const routes = [
@@ -43,6 +44,11 @@ const routes = [
         path: '/wallet',
         name: 'StolenCoins',
         component: StolenCoins
+    },
+    {
+        path: '/portfolio',
+        name: 'UserPortfolio',
+        component: UserPortfolio
     }
 ];
 

@@ -4,7 +4,8 @@ import HelloWorld from './components/HelloWorld.vue';
 import UserRegister from './components/UserRegister.vue';
 import UserLogin from './components/UserLogin.vue';
 import UserDashboard from './components/UserDashboard.vue';
-
+import UserHome from './components/UserHome.vue';
+import StolenCoins from './components/StolenCoins.vue';
 
 
 const routes = [
@@ -32,6 +33,16 @@ const routes = [
         path: '/dashboard',
         name: 'UserDashboard',
         component: UserDashboard
+    },
+    {
+        path: '/home',
+        name: 'UserHome',
+        component: UserHome
+    },
+    {
+        path: '/wallet',
+        name: 'StolenCoins',
+        component: StolenCoins
     }
 ];
 

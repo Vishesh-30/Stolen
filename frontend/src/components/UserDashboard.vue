@@ -4,7 +4,7 @@
       <div class="flex">
         <Sidebar />
         <main class="flex-grow container mx-auto px-6 py-6 text-left bg-gray-100">
-          <h2 class="text-2xl font-bold mb-6">My Portfolio</h2>
+          <h2 class="text-2xl font-bold mb-6">Top Stocks</h2>
           <div class="p-6 bg-white rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div v-for="stock in stocks" :key="stock.id" class="bg-white rounded-xl hover:shadow-lg hover:bg-green-50 p-6 flex flex-col items-center transition duration-300 ease-in-out cursor-pointer">
@@ -19,13 +19,6 @@
                   {{ stock.return }}% <i :class="{'fas fa-arrow-up': stock.return > 0, 'fas fa-arrow-down': stock.return < 0}"></i>
                 </p>
               </div>
-            </div>
-            <div class="flex justify-center mt-6">
-            <a class="justify-self-center align-self-center" href="/portfolio">
-                <button class="bg-green-700 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
-                  View All Stocks
-                </button>
-            </a>
             </div>
           </div>
           <div class="flex flex-wrap mt-6 ">

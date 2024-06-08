@@ -6,6 +6,9 @@ from flask_jwt_extended import create_access_token
 import hashlib
 import yfinance as yf
 import pandas as pd
+import json
+
+
 
 from application.models import *
 from application.marshal import *

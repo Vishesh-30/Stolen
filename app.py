@@ -29,6 +29,7 @@ def load_user(user_id):
 
 from application.api.register import *
 from application.api.topStocks import *
+from application.api.watchlist import *
 
 
 

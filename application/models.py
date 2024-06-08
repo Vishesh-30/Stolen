@@ -2,7 +2,7 @@ from application.config import db
 from flask_login import UserMixin
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
@@ -32,4 +32,5 @@ class Watchlist(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, nullable=False)
     stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'), nullable=False)
+    stock_name = db.Column(db.String(255), nullable=False)
     stock = db.relationship('Stock', backref=db.backref('watchlists', lazy=True))

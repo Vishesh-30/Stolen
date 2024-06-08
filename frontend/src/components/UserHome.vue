@@ -29,7 +29,24 @@
           </div>
           <div class="xl:w-96">
             <div class="p-6 bg-white rounded-lg">
-              <h2 class="text-2xl font-bold mb-6">Your Watch List</h2>
+              <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Your Watch List</h2>
+                <a href="/add_to_watchlist" class="text-green-600 hover:text-green-300 transition duration-300 ease-in-out cursor-pointer"><i class="fa-solid fa-plus"></i></a>
+              </div>
+              <div v-if="watchlist.length > 0">
+                <ul>
+                  <li v-for="(item, index) in watchlist" :key="index" class="rounded-xl hover:shadow-lg hover:bg-green-50 items-center transition duration-500 ease-in-out cursor-pointer">
+                    <div class="flex items-center justify-between p-4">
+                      <span class="font-bold text-xl ml-5">{{ item.stock_name }}</span>
+                      <span class="ml-2">Rs {{ item.current_price }}</span>
+                    </div>
+                    <hr class="w-full border-gray-200" />
+                  </li>
+                </ul>
+              </div>
+              <div v-else>
+                <p class="text-gray-500">Your watchlist is empty.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -38,6 +55,7 @@
   </div>
 </template>
 
+
 <script>
 import Navbar from '@/components/NavBar.vue';
 import Sidebar from '@/components/SideBar.vue';
@@ -45,10 +63,11 @@ import axios from 'axios';
 import tickerToNameMappings from '@/assets/mapping.json';
 
 const logoMappings = {
-  'BHARTIARTL': 'airtel'
+  'BHARTIARTL': 'airtel',
+  'SBIN': 'sbi',
 };
 const tickerOrder = ['RELIANCE', 'TCS', 'HDFCBANK', 'BHARTIARTL'];
-
+const username = localStorage.getItem('username');
 
 export default {
   name: 'UserDashboard',
@@ -58,7 +77,8 @@ export default {
   },
   data() {
     return {
-      stocks: []
+      stocks: [],
+      watchlist: [] // Add watchlist data property
     }
   },
   methods: {
@@ -99,35 +119,35 @@ export default {
       } catch (error) {
         console.error("Error fetching stocks data:", error);
       }
-    }
+    },
+    async fetchWatchList() {
+  try {
+    const response = await axios.get(`http://localhost:5000/api/watchlist/${username}`);
+    const data = response.data;
+    
+
+
+
+    // Transform watchlist data
+    const transformedWatchlist = data.map(item => ({
+      id: item.id,
+      user_id: item.user_id,
+      stock_id: item.stock_id,
+      stock_name: item.stock_name,
+      current_price: item.current_price
+    }));
+
+    // Update the component's state
+    this.watchlist = transformedWatchlist;
+  } catch (error) {
+    console.error("Error fetching watchlist:", error);
+  }
+}
   },
+
   mounted() {
     this.fetchStocksData();
+    this.fetchWatchList(); // Fetch watchlist data when component mounts
   }
 };
 </script>
-
-<style scoped>
-.grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-</style>
-
-
-
-
-
-  

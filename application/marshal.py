@@ -26,3 +26,13 @@ watchlist = {
     "error": fields.String,
 }
 
+stock_info = {
+    "ticker": fields.String,
+    "current_price": fields.Float,
+    "high": fields.Float,
+    "low": fields.Float,
+    "open": fields.Float,
+    "close": fields.Float,
+    "volume": fields.Integer,
+    "error": fields.String,
+}

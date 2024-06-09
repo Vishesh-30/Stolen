@@ -2,7 +2,7 @@
     <nav class="flex justify-between p-6 px-4 bg-green-50">
       <div class="flex justify-between items-center w-full">
         <div class="xl:w-1/4">
-          <a class="flex items-center max-w-max ml-8" href="/dashboard">
+          <a class="flex items-center max-w-max ml-8" href="/home">
             <img src="../assets/Logo_transp.png" alt="Stolen Logo" class="h-12">
             <span class="self-center text-2xl font-extrabold whitespace-nowrap dark:text-Gray pl-2">STOLEN</span>
           </a>

@@ -7,6 +7,8 @@ import UserDashboard from './components/UserDashboard.vue';
 import UserHome from './components/UserHome.vue';
 import StolenCoins from './components/StolenCoins.vue';
 import UserPortfolio from './components/UserPortfolio.vue';
+import WatchList from './components/WatchList.vue';
+import StockPage from './components/StockPage.vue';
 
 
 const routes = [
@@ -49,6 +51,18 @@ const routes = [
         path: '/portfolio',
         name: 'UserPortfolio',
         component: UserPortfolio
+    },
+    {
+        path: '/watchlist',
+        name: 'WatchList',
+        component: WatchList
+    },
+    {
+        path: '/stock/:ticker',
+        name: 'StockPage',
+        component: StockPage,
+        props: true
+    
     }
 ];
 

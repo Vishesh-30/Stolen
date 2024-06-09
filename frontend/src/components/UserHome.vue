@@ -31,7 +31,7 @@
             <div class="p-6 bg-white rounded-lg">
               <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold">Your Watch List</h2>
-                <a href="/add_to_watchlist" class="text-green-600 hover:text-green-300 transition duration-300 ease-in-out cursor-pointer"><i class="fa-solid fa-plus"></i></a>
+                <a href="/watchlist" class="text-green-600 hover:text-green-300 transition duration-300 ease-in-out cursor-pointer"><i class="fa-solid fa-plus"></i></a>
               </div>
               <div v-if="watchlist.length > 0">
                 <ul>

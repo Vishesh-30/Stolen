@@ -6,8 +6,14 @@ user = {
     "username": fields.String,
     "password": fields.String,
     "email": fields.String,
+    "name": fields.String,
+    "phone": fields.String,
+    "address": fields.String,
+    "city": fields.String,
+    "state": fields.String,
+    "zipcode": fields.String,
     "StolenCoins": fields.Integer,
-    "error": fields.String
+    "error": fields.String,
 }
 
 stock = {
@@ -54,3 +60,5 @@ stock_history = {
     'prices': fields.List(fields.Nested(stock_price)),
     'error': fields.String
 }
+
+

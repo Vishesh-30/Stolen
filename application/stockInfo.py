@@ -63,7 +63,7 @@ def get_stock_history(ticker, period):
         end_date = datetime.now()
         start_date = end_date - timedelta(days=5*365)
         interval = '5d'
-    elif period == 'all':
+    elif period == 'max':
         end_date = datetime.now()
         start_date = end_date - timedelta(days=10*365)
         interval = '1mo'

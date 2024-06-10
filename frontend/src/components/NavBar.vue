@@ -31,7 +31,9 @@
                 <i class="fa-regular fa-circle-user text-3xl text-green-900 hover:text-green-700 focus:text-green-700 transition duration-300 ease-in-out mr-7"></i>
                 <ul v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
                   <li class="px-4 py-2 hover:bg-green-100 cursor-pointer transition duration-300 ease-in-out">
+                    <a href="/profile">
                     <i class="fa-regular fa-circle-user mr-3"></i>{{ username }}
+                    </a>
                   </li>
                   <li class="px-4 py-2 hover:bg-green-100 cursor-pointer transition duration-300 ease-in-out"><i class="fa-solid fa-gear mr-3"></i>Settings</li>
                   <li @click="logout" class="px-4 py-2 hover:bg-green-100 cursor-pointer transition duration-300 ease-in-out">

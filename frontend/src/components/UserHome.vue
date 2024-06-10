@@ -68,7 +68,7 @@ import tickerToNameMappings from '@/assets/mapping.json';
 
 const logoMappings = {
   'BHARTIARTL': 'airtel',
-  'SBIN': 'sbi',
+
 };
 const tickerOrder = ['RELIANCE', 'TCS', 'HDFCBANK', 'BHARTIARTL'];
 const username = localStorage.getItem('username');

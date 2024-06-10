@@ -9,6 +9,7 @@ import StolenCoins from './components/StolenCoins.vue';
 import UserPortfolio from './components/UserPortfolio.vue';
 import WatchList from './components/WatchList.vue';
 import StockPage from './components/StockPage.vue';
+import UserProfile from './components/UserProfile.vue';
 
 
 const routes = [
@@ -62,7 +63,11 @@ const routes = [
         name: 'StockPage',
         component: StockPage,
         props: true
-    
+    },
+    {
+        path: '/profile',
+        name: 'UserProfile',
+        component: UserProfile
     }
 ];
 

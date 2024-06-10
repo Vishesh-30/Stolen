@@ -39,7 +39,7 @@ class RegisterApI (Resource):
                 token = create_access_token(identity=user.username)
                 return {'access_token': token}, 201
             else:
-                return {'error': 'User already exists'}, 409
+                return {'message': 'User already exists'}, 409
 
 
 
@@ -60,7 +60,7 @@ class LoginAPI(Resource):
                 token = create_access_token(identity=user.username)
                 return {'access_token': token}, 200
             else:
-                return {'error': 'User does not exist or Invalid Credentials'}, 401
+                return {'message': 'User does not exist or Invalid Credentials'}, 401
             
 
 api.add_resource(LoginAPI, '/api/login')

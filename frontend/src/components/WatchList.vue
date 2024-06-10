@@ -9,10 +9,12 @@
           <div v-if="watchlist.length > 0">
             <ul>
               <li v-for="(item, index) in watchlist" :key="index" class="rounded-xl hover:shadow-lg hover:bg-green-50 items-center transition duration-500 ease-in-out cursor-pointer">
+                <a :href="`/stock/${item.stock_ticker}`">
                 <div class="flex items-center justify-between p-4">
                   <span class="font-bold text-xl ml-5">{{ item.stock_name }}</span>
                   <span class="ml-2">Rs {{ item.current_price }}</span>
                 </div>
+                </a>
                 <hr class="w-full border-gray-200" />
               </li>
             </ul>
@@ -87,6 +89,7 @@ export default {
           user_id: item.user_id,
           stock_id: item.stock_id,
           stock_name: item.stock_name,
+          stock_ticker: item.stock_ticker,
           current_price: parseFloat(item.current_price).toFixed(2) // Ensure current_price is formatted correctly
         }));
         // Update the component's state

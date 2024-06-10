@@ -13,7 +13,7 @@ import json
 from application.models import *
 from application.marshal import *
 from application.controllers.validate import *
-from application.stockInfo import get_stock_info
+from application.stockInfo import get_stock_price
 from app import app, api, db, login_manager
 
 
@@ -37,7 +37,7 @@ class WatchListAPI(Resource):
                 if stock_entry:
                     # Fetch the current price of the stock
                     try:
-                        stock_info = get_stock_info(stock_entry.ticker)
+                        stock_info = get_stock_price(stock_entry.ticker)
                         # print(stock_info)
 
                         current_price = round(stock_info.get("current_price", 0), 2)
@@ -52,6 +52,7 @@ class WatchListAPI(Resource):
                         "user_id": entry.user_id,
                         "stock_id": entry.stock_id,
                         "stock_name": stock_entry.name,
+                        "stock_ticker": stock_entry.ticker,
                         "current_price": current_price,
                         "stock": {
                             "id": stock_entry.id,

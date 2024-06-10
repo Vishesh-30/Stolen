@@ -8,6 +8,7 @@
         <div class="p-6 bg-white rounded-lg">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div v-for="(stock, index) in stocks" :key="index" class="bg-white rounded-xl hover:shadow-lg hover:bg-green-50 p-6 flex flex-col items-center transition duration-500 ease-in-out cursor-pointer">
+              <a :href="`/stock/${stock.name_ns}`">
               <div class="mb-4">
                 <img :src="stock.logo" alt="Company Logo" class="h-12 w-12" @error="stock.logo = 'path/to/default/logo.png'">
               </div>
@@ -18,6 +19,7 @@
               <p :class="{'text-green-500': stock.return > 0, 'text-red-500': stock.return < 0}">
                 {{ stock.return }}% <i :class="{'fas fa-arrow-up': stock.return > 0, 'fas fa-arrow-down': stock.return < 0}"></i>
               </p>
+              </a>
             </div>
           </div>
         </div>
@@ -36,10 +38,12 @@
               <div v-if="watchlist.length > 0">
                 <ul>
                   <li v-for="(item, index) in watchlist" :key="index" class="rounded-xl hover:shadow-lg hover:bg-green-50 items-center transition duration-500 ease-in-out cursor-pointer">
+                    <a :href="`/stock/${item.stock_ticker}`">
                     <div class="flex items-center justify-between p-4">
                       <span class="font-bold text-xl ml-5">{{ item.stock_name }}</span>
                       <span class="ml-2">Rs {{ item.current_price }}</span>
                     </div>
+                    </a>
                     <hr class="w-full border-gray-200" />
                   </li>
                 </ul>
@@ -134,6 +138,7 @@ export default {
       user_id: item.user_id,
       stock_id: item.stock_id,
       stock_name: item.stock_name,
+      stock_ticker: item.stock_ticker,
       current_price: item.current_price
     }));
 

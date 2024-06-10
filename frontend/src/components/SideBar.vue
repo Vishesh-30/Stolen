@@ -1,5 +1,5 @@
 <template>
-    <div class="hidden h-full xl:block xl:w-1/4 h-screen bg-white p-5 border-r border-gray-200 shadow-lg">
+    <div class="hidden h-full xl:block xl:w-1/4 h-screen bg-white p-5 border-r border-gray-200">
       <!-- Top Card with Total Investment -->
       <div class="bg-green-700 text-white rounded-xl shadow-md p-5 mb-8 shadow-lg hover:shadow-2xl transition duration-300 ease-in-out cursor-pointer">
         <p class="text-sm font-semibold">Your Investments</p>

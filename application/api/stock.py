@@ -13,15 +13,31 @@ import json
 from application.models import *
 from application.marshal import *
 from application.controllers.validate import *
-from application.stockInfo import get_stock_info
+from application.stockInfo import *
 from app import app, api, db, login_manager
 
 
-
-class StockAPI(Resource):
-
+class StockInfoAPI(Resource):
     @marshal_with(stock_info)
     def get(self, ticker):
-        stock_info = get_stock_info(ticker)
-        return stock_info
-    
+        try:
+            stock_info_data = get_stock_info(ticker)
+            return stock_info_data
+        except Exception as e:
+            return {'error': str(e)}, 400
+
+class StockHistoryAPI(Resource):
+    @marshal_with(stock_history)
+    def get(self, ticker, period):
+        try:
+            stock_history_data = get_stock_history(ticker, period)
+            # print(stock_history_data)
+            return stock_history_data
+        except Exception as e:
+            return {'error': str(e)}, 400
+
+# Add resources to the API
+api.add_resource(StockInfoAPI, '/api/stockinfo/<string:ticker>')
+api.add_resource(StockHistoryAPI, '/api/stockhistory/<string:ticker>/<string:period>')
+
+

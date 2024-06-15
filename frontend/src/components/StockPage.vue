@@ -4,8 +4,13 @@
     <div class="flex">
       <Sidebar />
       <main class="flex-grow container mx-auto px-6 py-6 text-left bg-gray-100">
-        <h2 class="text-2xl font-bold mb-6">{{ stockInfo.name }} ({{ ticker }})</h2>
-        <h5 class="text-xl font-bold mb-4">Rs. {{ stockInfo.current_price }}</h5>
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-regular">{{ stockInfo.name }} ({{ ticker }})</h2>
+          <button @click="addToWatchlist" class="text-green-700 font-semibold py-2 px-4 hover:text-green-400 transition duration-300 ease-in-out cursor-pointer">
+            <i :class="watchlistAdded ? 'fa-solid fa-check' : 'fa-solid fa-plus'"></i>
+          </button>
+        </div>
+        <h5 class="text-4xl font-bold mb-4">Rs. {{ stockInfo.current_price }}</h5>
         <div class="p-6 bg-white rounded-lg">
           <apexchart v-if="chartData" type="line" :options="chartOptions" :series="chartSeries" height="350"></apexchart>
           <div class="flex justify-between mt-6 ml-20 mr-20">
@@ -27,15 +32,12 @@
             <li><strong>P/E Ratio:</strong> {{ stockInfo.pe_ratio }}</li>
             <li><strong>Dividend Yield:</strong> {{ stockInfo.dividend_yield }}</li>
           </ul>
-          <div class="justify-between">
-            <button class="m-5 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-2 transition duration-300 ease-in-out cursor-pointer">
+          <div class="justify-between mt-5">
+            <button class="mr-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-20 rounded-lg focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-2 transition duration-300 ease-in-out cursor-pointer">
               Buy
             </button>
-            <button class="m-5 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-2 transition duration-300 ease-in-out cursor-pointer">
+            <button class="ml-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-20 rounded-lg focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-2 transition duration-300 ease-in-out cursor-pointer">
               Sell
-            </button>
-            <button @click="addToWatchlist" class="m-5 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-green-500 focus:ring-offset-2 transition duration-300 ease-in-out cursor-pointer">
-              Add to Watchlist
             </button>
           </div>
         </div>
@@ -62,6 +64,7 @@ export default {
   data() {
     return {
       stockInfo: {},
+      watchlistAdded: false,
       periods: ['1D', '5D', '1MO', '6MO', '1Y', '5Y', 'MAX'],
       chartData: [],
       chartOptions: {
@@ -122,6 +125,7 @@ export default {
         const username = localStorage.getItem('username');
         const response = await axios.post(`http://localhost:5000/api/watchlist/${username}/${this.ticker}`);
         console.log(response.data);
+        this.watchlistAdded = true;
         alert('Stock added to watchlist!');
       } catch (error) {
         console.error('Error adding stock to watchlist:', error);
